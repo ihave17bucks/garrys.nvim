@@ -111,9 +111,9 @@ Every plugin is a table. The first field is always `"user/repo"`.
 | `:GarryInstall` | Install every missing plugin |
 | `:GarryUpdate` | Pull updates for all plugins |
 | `:GarryClean` | Delete plugins not in your spec |
-| `:GarryLock` | Write `garrys.lock` — pins every plugin to its current commit |
+| `:GarryLock` | Write `garrys.lock` (pins every plugin to its current commit) |
 | `:GarryRestore` | Roll back every plugin to its locked commit |
-| `:GarryStatus` | Floating window — see what's installed, what's lazy, what's broken |
+| `:GarryStatus` | Floating window (see what's installed, what's lazy, what's broken) |
 | `:GarryList` | Quick cmdline summary |
 
 ---
