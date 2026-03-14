@@ -180,7 +180,7 @@ Human-readable. Commit this.
 | Async installs | yes | yes |
 | Built-in UI | elaborate | minimal floating window |
 | Rockspec support | yes | no, and proud of it |
-| Neovim target | 0.8+ | **0.10+ only** — no legacy weight |
+| Neovim target | 0.8+ | **0.10+ only**, no legacy weight |
 
 lazy.nvim is an engineering achievement. garrys.nvim is a tool that does one thing.
 
@@ -206,7 +206,7 @@ garrys.nvim/
 
 ## Part of the Garry's ecosystem
 
-garrys.nvim is the engine under **GarryVim** — a full Neovim framework with an addon system, typed Lua API, and LSP/formatting/linting configured out of the box.
+garrys.nvim is the engine under **GarryVim**, a full Neovim framework with an addon system, typed Lua API, and LSP/formatting/linting configured out of the box.
 
 But garrys.nvim stands alone. You don't need GarryVim to use it.
 
