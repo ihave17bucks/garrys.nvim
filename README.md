@@ -41,8 +41,8 @@ garrys.nvim fits in your head.
 
 ## Requirements
 
-- **Neovim** `>= 0.10.0` — built with LuaJIT, uses `vim.system()` and `vim.uv` directly
-- **Git** `>= 2.19.0` — for partial clones
+- **Neovim** `>= 0.10.0` - built with LuaJIT, uses `vim.system()` and `vim.uv` directly
+- **Git** `>= 2.19.0` - for partial clones
 - That's it
 
 ---
