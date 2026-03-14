@@ -47,6 +47,12 @@ garrys.nvim fits in your head.
 - **Git** `>= 2.19.0` - for partial clones
 - That's it
 
+## how to get plugins or whatever
+
+https://github.com/chengwei920412/awesome-neovim-vim
+
+just get what you want or go on google im not your dad
+
 ---
 
 ## Install
