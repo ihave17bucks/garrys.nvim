@@ -155,7 +155,7 @@ function M.open()
 
   vim.bo[M._buf].filetype   = "garrys"
   vim.bo[M._buf].modifiable = false
-  vim.bo[M._buf].bufhidden  = "wipe"
+  vim.bo[M._buf].bufhidden  = "hide"
 
   M._win = api.nvim_open_win(M._buf, false, {
     relative = "editor",
@@ -184,7 +184,16 @@ function M.open()
   vim.api.nvim_set_hl(0, "GarrysDim",     { fg = "#585b70" })
 
   for _, key in ipairs({ "q", "<Esc>" }) do
-    vim.keymap.set("n", key, function() M.close() end, {
+    vim.keymap.set("n", key, function()
+      -- Never close the last window — just hide the float
+      if #api.nvim_list_wins() <= 1 then
+        if M._win and api.nvim_win_is_valid(M._win) then
+          api.nvim_win_hide(M._win)
+        end
+      else
+        M.close()
+      end
+    end, {
       buffer = M._buf,
       silent = true,
       nowait = true,
