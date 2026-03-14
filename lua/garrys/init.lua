@@ -4,13 +4,13 @@ M._plugins = {}
 
 M.config = {
 	path = vim.fn.stdpath("data") .. "/garrys/plugins",
+	lockfile = vim.fn.stdpath("config") .. "/garrys.lock",
 	concurrency = 8,
 }
 
 function M.setup(specs, opts)
 	M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 
-	-- Make sure install dir exists
 	vim.fn.mkdir(M.config.path, "p")
 
 	for _, spec in ipairs(specs) do
@@ -18,10 +18,7 @@ function M.setup(specs, opts)
 		M._plugins[plugin.name] = plugin
 	end
 
-	-- Load anything already on disk
-	for _, plugin in pairs(M._plugins) do
-		M._inject(plugin)
-	end
+	require("garrys.loader").load_all(M._plugins)
 end
 
 function M._normalize(spec)
@@ -31,38 +28,25 @@ function M._normalize(spec)
 
 	local source = spec[1]
 	local name = source:match("[^/]+$")
+	local u = require("garrys.util")
 
 	return {
 		name = spec.name or name,
 		source = source,
 		url = "https://github.com/" .. source .. ".git",
-		path = M.config.path .. "/" .. (spec.name or name),
+		path = u.plugin_path(M.config.path, spec.name or name),
+		lazy = spec.lazy or false,
+		event = spec.event or nil,
+		cmd = spec.cmd or nil,
+		ft = spec.ft or nil,
+		keys = spec.keys or nil,
+		depends = spec.depends or {},
 		opts = spec.opts or {},
 		config = spec.config or nil,
 		build = spec.build or nil,
+		pin = spec.pin or nil,
+		_loaded = false,
 	}
-end
-
-function M._inject(plugin)
-	if not vim.loop.fs_stat(plugin.path) then
-		return
-	end
-
-	vim.opt.rtp:prepend(plugin.path)
-
-	local after = plugin.path .. "/after"
-	if vim.loop.fs_stat(after) then
-		vim.opt.rtp:append(after)
-	end
-
-	if plugin.config then
-		plugin.config(plugin.opts)
-	elseif next(plugin.opts) ~= nil then
-		local ok, mod = pcall(require, plugin.name)
-		if ok and mod.setup then
-			mod.setup(plugin.opts)
-		end
-	end
 end
 
 return M
