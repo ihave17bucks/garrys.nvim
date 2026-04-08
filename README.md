@@ -158,9 +158,9 @@ Each file returns a table of specs. Explicit specs in `setup({})` take priority.
 | `:GarryUpdate` | Pull updates for all plugins |
 | `:GarryClean` | Delete plugins not in your spec |
 | `:GarryStatus` | Open the tabbed HUD window |
-| `:GarryLock` | Write `garrys.lock` — pin every plugin to its current commit |
+| `:GarryLock` | Write `garrys.lock` pin every plugin to its current commit |
 | `:GarryRestore` | Roll back every plugin to its locked commit |
-| `:GarryHealth` | Check every plugin — on disk, valid repo, loadable, require() |
+| `:GarryHealth` | Check every plugin on disk, valid repo, loadable, require() |
 | `:GarryProfile` | Show startup load time ranked per plugin |
 | `:GarryDiff` | Show what commits changed per plugin since last update |
 | `:GarrySearch <query>` | Search GitHub, pick a result, install it live |
