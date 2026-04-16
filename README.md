@@ -44,7 +44,7 @@ lazy.nvim is brilliant. garrys.nvim fits in your head.
 
 ## Requirements
 
-- **Neovim** `>= 0.10.0` — LuaJIT, uses `vim.system()` and `vim.uv` directly
+- **Neovim** `>= 0.10.0` LuaJIT, uses `vim.system()` and `vim.uv` directly
 - **Git** `>= 2.19.0`
 - That's it
 
@@ -160,9 +160,9 @@ Each file returns a table of specs. Explicit specs in `setup({})` take priority.
 | `:GarryUpdate` | Pull updates for all plugins |
 | `:GarryClean` | Delete plugins not in your spec |
 | `:GarryStatus` | Open the tabbed HUD window |
-| `:GarryLock` | Write `garrys.lock` — pin every plugin to its current commit |
+| `:GarryLock` | Write `garrys.lock` pin every plugin to its current commit |
 | `:GarryRestore` | Roll back every plugin to its locked commit |
-| `:GarryHealth` | Check every plugin — on disk, valid repo, loadable, require() |
+| `:GarryHealth` | Check every plugin on disk, valid repo, loadable, require() |
 | `:GarryProfile` | Show startup load time ranked per plugin |
 | `:GarryDiff` | Show what commits changed per plugin since last update |
 | `:GarrySearch <query>` | Search GitHub, pick a result, install it live |
@@ -296,7 +296,7 @@ garrys.nvim/
 
 ## Part of the Garry's ecosystem
 
-garrys.nvim is the engine under **GarryVim** — a full Neovim distribution built on this plugin manager with an addon system, typed Lua API, and LSP/formatting/linting configured out of the box.
+garrys.nvim is the engine under **GarryVim** a full Neovim distribution built on this plugin manager with an addon system, typed Lua API, and LSP/formatting/linting configured out of the box.
 
 But garrys.nvim stands alone. You don't need GarryVim to use it.
 
