@@ -55,18 +55,26 @@ lazy.nvim is brilliant. garrys.nvim fits in your head.
 Paste this at the top of your `~/.config/nvim/init.lua`. garrys.nvim bootstraps itself.
 
 ```lua
+-- bootstrap garrys.nvim
 local path = vim.fn.stdpath("data") .. "/garrys/garrys.nvim"
 
-if not vim.loop.fs_stat(path) then
-  vim.fn.system({
-    "git", "clone", "--depth=1",
+if not (vim.uv or vim.loop).fs_stat(path) then
+  local out = vim.fn.system({
+    "git", "clone", "--filter=blob:none",
     "https://github.com/ihave17bucks/garrys.nvim.git",
     path,
   })
+
+  if vim.v.shell_error ~= 0 then
+    error("Failed to clone garrys.nvim:\n" .. out)
+  end
 end
 
 vim.opt.rtp:prepend(path)
-require("garrys") -- single entry point
+
+require("garrys").setup({
+  { import = "plugins" },
+})
 ```
 
 > Installs to `~/.local/share/nvim/garrys/garrys.nvim`. Remove anytime with
