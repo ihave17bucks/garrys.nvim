@@ -56,25 +56,44 @@ Paste this at the top of your `~/.config/nvim/init.lua`. garrys.nvim bootstraps 
 
 ```lua
 -- garrys.nvim bootstrapper
-local path = vim.fn.stdpath("data") .. "/garrys/garrys.nvim"
 
-if not vim.loop.fs_stat(path) then
-  vim.notify("[garrys] bootstrapping...")
-  local out = vim.fn.system({
-    "git", "clone", "--depth=1",
-    "https://github.com/ihave17bucks/garrys.nvim.git",
-    path,
+local uv = vim.loop
+local fn = vim.fn
+
+local path = fn.stdpath("data") .. "/garrys/garrys.nvim"
+local repo = "https://github.com/ihave17bucks/garrys.nvim.git"
+
+local function exists(p)
+  return uv.fs_stat(p) ~= nil
+end
+
+local function notify(msg, level)
+  vim.notify("[garrys] " .. msg, level or vim.log.levels.INFO)
+end
+
+-- clone if missing
+if not exists(path) then
+  notify("cloning plugin...")
+
+  local out = fn.system({
+    "git", "clone", "--depth=1", repo, path
   })
-  if vim.v.shell_error ~= 0 then
-    vim.notify("[garrys] bootstrap failed:\n" .. out, vim.log.levels.ERROR)
+
+  if fn.shell_error ~= 0 then
+    notify("clone failed:\n" .. out, vim.log.levels.ERROR)
     return
   end
 end
 
+-- load plugin via runtimepath (preferred way)
 vim.opt.rtp:prepend(path)
-package.path = package.path .. ";" .. path .. "/lua/?.lua"
-package.path = package.path .. ";" .. path .. "/lua/?/init.lua"
-vim.cmd("source " .. path .. "/plugin/garrys.lua")
+
+-- optional debug check
+if not exists(path .. "/plugin") then
+  notify("no plugin/ dir found (maybe lua-only plugin?)", vim.log.levels.WARN)
+end
+
+notify("loaded")
 ```
 
 > Installs to `~/.local/share/nvim/garrys/garrys.nvim`. Remove anytime with
