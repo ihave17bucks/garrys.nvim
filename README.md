@@ -66,6 +66,7 @@ if not vim.loop.fs_stat(path) then
 end
 
 vim.opt.rtp:prepend(path)
+require("garrys") -- single entry point
 ```
 
 > Installs to `~/.local/share/nvim/garrys/garrys.nvim`. Remove anytime with
