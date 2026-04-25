@@ -577,7 +577,7 @@ function M.open()
 	local row = math.floor((vim.o.lines - h) / 2)
 	local col = math.floor((vim.o.columns - w) / 2)
 
-	S.win = api.nvim_open_win(S.buf, false, {
+	S.win = api.nvim_open_win(S.buf, true, {
 		relative = "editor",
 		width = w,
 		height = h,
@@ -591,7 +591,7 @@ function M.open()
 	})
 
 	vim.wo[S.win].wrap = false
-	vim.wo[S.win].cursorline = false
+	vim.wo[S.win].cursorline = true 
 	vim.wo[S.win].number = false
 	vim.wo[S.win].signcolumn = "no"
 	vim.wo[S.win].foldcolumn = "0"
