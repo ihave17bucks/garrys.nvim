@@ -326,7 +326,7 @@ garrys.nvim stands alone. You don't need GarryVim to use it.
 
 ## License
 
-MIT — do whatever. Just don't blame me when you break it.
+MIT do whatever. Just don't blame me when you break it.
 
 ---
 
