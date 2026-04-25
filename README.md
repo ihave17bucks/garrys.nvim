@@ -24,19 +24,19 @@
 
 ## Features
 
-- **Drop-in lazy.nvim replacement** — paste your existing config, it works
-- **Async installs** — concurrent git clones via `vim.system()`, never blocks
-- **Tabbed HUD** — Installed / Updates / Log with live progress bar
-- **Plugin search** — `:GarrySearch` hits GitHub API, pick and install live
-- **Startup profiler** — `:GarryProfile` ranks every plugin by load time
-- **Diff view** — `:GarryDiff` shows what changed per plugin since last update
-- **Lockfile** — pin every plugin to an exact commit, reproducible everywhere
-- **Health checks** — `:GarryHealth` validates every plugin on disk
-- **Migration tool** — `:GarryMigrate` converts lazy.nvim specs automatically
-- **Auto-install** — missing plugins install on first launch, no manual step
-- **Bytecode cache** — `vim.loader.enable()` called automatically
-- **Strict dep graph** — opt-in validation catches undeclared dependencies
-- **Retry on failure** — failed git installs retry once before giving up
+- **Drop-in lazy.nvim replacement**: paste your existing config, it works
+- **Async installs**: concurrent git clones via `vim.system()`, never blocks
+- **Tabbed HUD**: Installed / Updates / Log with live progress bar
+- **Plugin search**: `:GarrySearch` hits GitHub API, pick and install live
+- **Startup profiler**: `:GarryProfile` ranks every plugin by load time
+- **Diff view**: `:GarryDiff` shows what changed per plugin since last update
+- **Lockfile**: pin every plugin to an exact commit, reproducible everywhere
+- **Health checks**: `:GarryHealth` validates every plugin on disk
+- **Migration tool**: `:GarryMigrate` converts lazy.nvim specs automatically
+- **Auto-install**: missing plugins install on first launch, no manual step
+- **Bytecode cache**: `vim.loader.enable()` called automatically
+- **Strict dep graph**: opt-in validation catches undeclared dependencies
+- **Retry on failure**: failed git installs retry once before giving up
 
 ---
 
@@ -88,7 +88,7 @@ require("garrys").setup({
 
 Open Neovim. garrys.nvim bootstraps itself, then installs your plugins automatically.
 
-> Installs to `~/.local/share/nvim/garrys/garrys.nvim` — outside your config.  
+> Installs to `~/.local/share/nvim/garrys/garrys.nvim` outside your config.  
 > Remove with `rm -rf ~/.local/share/nvim/garrys`
 
 ---
@@ -109,7 +109,7 @@ require("garrys").setup({
 ```
 
 > **lazy.nvim users:** paste your existing spec unchanged. `dependencies`, `config`,  
-> `build`, `init`, `priority`, `dev` — all silently accepted.
+> `build`, `init`, `priority`, `dev` all silently accepted.
 
 ---
 
@@ -180,10 +180,10 @@ Same as lazy.nvim's `{ import = "plugins" }`.
 | `:GarryInstall` | Install every missing plugin |
 | `:GarryUpdate` | Pull updates for all plugins |
 | `:GarryClean` | Delete plugins not in your spec |
-| `:GarryStatus` | Open tabbed HUD — Installed / Updates / Log |
-| `:GarryLock` | Write `garrys.lock` — pin every plugin to current commit |
+| `:GarryStatus` | Open tabbed HUD a Installed / Updates / Log |
+| `:GarryLock` | Write `garrys.lock` and will pin every plugin to current commit |
 | `:GarryRestore` | Roll back every plugin to its locked commit |
-| `:GarryHealth` | Check every plugin — on disk, valid repo, loadable, require() |
+| `:GarryHealth` | Check every plugin on disk, valid repo, loadable, require() |
 | `:GarryProfile` | Rank plugins by startup load time |
 | `:GarryDiff` | Show what changed per plugin since last update |
 | `:GarrySearch <query>` | Search GitHub, pick a result, install live |
@@ -204,11 +204,11 @@ Same as lazy.nvim's `{ import = "plugins" }`.
 │                                                             │
 │   ✔  plenary.nvim               installed                   │
 │   ✔  nvim-treesitter            installed                   │
-│   ▶  nvim-lspconfig             installing…                 │
+│   ▶  nvim-lspconfig             installing…                │
 │   ○  telescope.nvim             missing                     │
 │                                                             │
-│   ████████████████████████████░░░░░░░░░░   75%             │
-│   4 plugins  ·  2 ok  ·  1 active                          │
+│   ████████████████████████████░░░░░░░░░░   75%              │
+│   4 plugins  ·  2 ok  ·  1 active                           │
 │   q close  ·  ? help                                        │
 ╰─────────────────────────────────────────────────────────────╯
 ```
@@ -318,7 +318,7 @@ garrys.nvim/
 
 ## Part of the Garry's Ecosystem
 
-garrys.nvim is the engine under **GarryVim** — a full Neovim distribution built on this plugin manager with an addon system, LSP, formatting, and linting configured out of the box.
+garrys.nvim is the engine under **GarryVim** a full Neovim distribution built on this plugin manager with an addon system, LSP, formatting, and linting configured out of the box.
 
 garrys.nvim stands alone. You don't need GarryVim to use it.
 
