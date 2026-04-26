@@ -13,7 +13,7 @@ function M.search(query, callback)
     { text = true },
     function(result)
       if result.code ~= 0 then
-        callback(nil, "curl failed — are you online?")
+        callback(nil, "curl failed are you online?")
         return
       end
 
@@ -72,7 +72,7 @@ function M.pick(query)
       end
 
       vim.ui.select(items, {
-        prompt = "garrys.nvim — install plugin:",
+        prompt = "garrys.nvim install plugin:",
         format_item = function(item) return item end,
       }, function(choice, idx)
         if not choice or not idx then return end

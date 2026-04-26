@@ -312,7 +312,7 @@ local function build_footer()
 	local rows = {}
 	local W = CFG.width
 
-	-- Progress bar — only on installed tab
+	-- Progress bar only on installed tab
 	if S.tab == "installed" and S.total > 0 then
 		local bar_w = 40
 		local filled = math.floor(clamp(S.done / S.total, 0, 1) * bar_w)

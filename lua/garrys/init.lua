@@ -72,10 +72,10 @@ function M.load(opts)
 end
 
 -- Normalize
--- Accepts lazy.nvim specs 1:1 — user can copy-paste without changing anything
+-- Accepts lazy.nvim specs 1:1 user can copy-paste without changing anything
 
 function M._normalize(spec)
-	-- Handle invalid specs gracefully — warn and skip, never crash
+	-- Handle invalid specs gracefully warn and skip, never crash
 	if spec == nil then
 		return nil
 	end
@@ -170,7 +170,7 @@ function M._normalize(spec)
 		url = spec.url or ("https://github.com/" .. source .. ".git"),
 		path = u.plugin_path(M.config.path, name),
 
-		-- Lazy loading — identical to lazy.nvim
+		-- Lazy loading identical to lazy.nvim
 		lazy = spec.lazy or false,
 		event = spec.event or nil,
 		cmd = spec.cmd or nil,
@@ -181,17 +181,17 @@ function M._normalize(spec)
 
 		dep = dep_clean,
 
-		-- config / on — both accepted (lazy.nvim compat)
+		-- config / on both accepted (lazy.nvim compat)
 		on = spec.on or spec.config or nil,
 		-- init runs before load (lazy.nvim compat)
 		init = spec.init or nil,
-		-- build / make — both accepted (lazy.nvim compat)
+		-- build / make both accepted (lazy.nvim compat)
 		make = spec.make or spec.build or nil,
 
 		opts = spec.opts or {},
 
 		-- These lazy.nvim fields are silently accepted but not used
-		-- priority, dev, version, module — no errors, no warnings
+		-- priority, dev, version, module no errors, no warnings
 		_loaded = false,
 	}
 end

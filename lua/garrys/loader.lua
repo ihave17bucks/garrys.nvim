@@ -84,7 +84,7 @@ function M.register(plugin)
 	if plugin.event then
 		local events = type(plugin.event) == "string" and { plugin.event } or plugin.event
 
-		-- Validate events — unknown events crash nvim_create_autocmd
+		-- Validate events unknown events crash nvim_create_autocmd
 		local valid = {}
 		for _, ev in ipairs(events) do
 			local ok = pcall(vim.api.nvim_create_autocmd, ev, {

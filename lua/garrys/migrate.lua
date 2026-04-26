@@ -14,7 +14,7 @@ local DIRECT = {
 local RENAME = {
   dependencies = "depends",
   -- priority is dropped use lazy = false instead
-  -- dev is dropped — not supported
+  -- dev is dropped not supported
   -- version is dropped not supported yet
   -- module is dropped not needed
 }
@@ -23,7 +23,7 @@ local RENAME = {
 local DROPPED = {
   priority = "use lazy = false to ensure early loading",
   dev      = "not supported in garrys.nvim",
-  version  = "semver pinning not supported yet — use pin = true to freeze",
+  version  = "semver pinning not supported yet use pin = true to freeze",
   module   = "not needed garrys.nvim handles module loading automatically",
   cond     = nil,  -- supported, pass through silently
 }
@@ -61,7 +61,7 @@ local function convert_spec(spec)
   -- Dropped keys too warn the user
   for key, hint in pairs(DROPPED) do
     if spec[key] ~= nil and hint then
-      table.insert(warns, string.format("'%s' dropped — %s", key, hint))
+      table.insert(warns, string.format("'%s' dropped %s", key, hint))
     end
   end
 
@@ -98,7 +98,7 @@ local function spec_to_string(spec, indent)
       elseif type(val) == "boolean" then
         val_str = tostring(val)
       elseif type(val) == "table" then
-        -- Simple table — inline if small
+        -- Simple table inline if small
         local items = {}
         for _, v in ipairs(val) do
           table.insert(items, string.format("%q", v))
@@ -192,12 +192,10 @@ function M.convert(input_path, output_path)
   out:close()
 
   vim.notify("[garrys] ✔ migrated → " .. out_path, vim.log.levels.INFO)
-  return out_path
-
-  -- Auto-validate immediately after converting
-  -- Parse deps from the converted file and cross-check them
-  vim.notify("[garrys] validating output...", vim.log.levels.INFO)
+  vim.notify("[garrys] validating output...", vim.log.levels.INFO) -- Auto-validate immediately after converting and Parse deps from the converted file and cross-check them
   M._validate_file(out_path)
+
+  return out_path
 end
 
 -- Validate a converted file by scanning for depends = { ... } blocks
@@ -233,7 +231,7 @@ function M._validate_file(path)
       local dep_name = dep:match("[^/]+$")
       if not sources[dep_name] then
         table.insert(errors, string.format(
-          "  '%s' depends on '%s' — not found in spec, add it",
+          "  '%s' depends on '%s' not found in spec, add it",
           current or "unknown", dep
         ))
       end
